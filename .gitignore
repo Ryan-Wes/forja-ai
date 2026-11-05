@@ -36,3 +36,6 @@ build/
 # === Python (dev server local) ===
 __pycache__/
 *.pyc
+
+# === Notas internas (não vão pro repo) ===
+DECISOES.md
