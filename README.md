@@ -32,11 +32,10 @@ forja/
 ├── css/
 │   ├── theme.css   # tokens: cores, fontes, espaços (mexe aqui pra trocar o tema)
 │   └── app.css     # estilos das telas
-├── js/
-│   ├── icons.js    # biblioteca de ícones SVG
-│   ├── storage.js  # dados + localStorage + regras de XP/nível/chefões
-│   └── app.js      # telas e interações
-└── CONCEITO.md     # a "planta baixa" do app
+└── js/
+    ├── icons.js    # biblioteca de ícones SVG
+    ├── storage.js  # dados + localStorage + regras de XP/nível/chefões
+    └── app.js      # telas e interações
 ```
 
 ## ▶️ Rodando
@@ -58,4 +57,4 @@ Depois abre `http://localhost:5173`.
 
 ---
 
-Projeto pessoal, feito no meu ritmo. A planta completa está em [`CONCEITO.md`](CONCEITO.md).
+Projeto pessoal, feito no meu ritmo.
