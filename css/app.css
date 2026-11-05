@@ -1,0 +1,463 @@
+/* ============================================================
+   FORJA — ESTILO
+   Usa SEMPRE as variáveis de theme.css. Nada de cor fixa aqui.
+   ============================================================ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte);
+  font-size: var(--txt-m);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+#app {
+  width: 100%;
+  max-width: var(--largura-max);
+  min-height: 100vh;
+  padding: var(--espaco);
+  padding-bottom: calc(var(--altura-nav) + var(--espaco-g));
+}
+
+button { font-family: inherit; cursor: pointer; border: none; }
+input, textarea, select {
+  font-family: inherit;
+  font-size: var(--txt-m);
+  color: var(--cor-texto);
+  background: var(--cor-fundo-2);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-botao);
+  padding: 12px;
+  width: 100%;
+}
+input::placeholder, textarea::placeholder { color: var(--cor-texto-apagado); }
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--cor-destaque);
+}
+
+/* ---------------- Cabeçalho (tela Hoje) ---------------- */
+.topo { margin-bottom: var(--espaco-g); }
+.topo .data {
+  color: var(--cor-texto-fraco);
+  font-size: var(--txt-p);
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+.topo .saudacao {
+  font-size: var(--txt-xg);
+  font-weight: var(--peso-forte);
+  line-height: 1.15;
+  margin-top: 2px;
+}
+.topo .saudacao .nome-ego { color: var(--cor-destaque); }
+.topo .mantra {
+  margin-top: 6px;
+  color: var(--cor-texto-fraco);
+  font-style: italic;
+  font-size: var(--txt-p);
+}
+
+/* ---------------- Barra de progresso do dia ---------------- */
+.progresso-dia {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-card);
+  padding: var(--espaco);
+  margin-top: var(--espaco);
+  box-shadow: var(--sombra-card);
+}
+.progresso-dia .linha {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 10px;
+}
+.progresso-dia .rotulo { font-size: var(--txt-p); color: var(--cor-texto-fraco); }
+.progresso-dia .contagem { font-weight: var(--peso-forte); font-size: var(--txt-g); }
+.progresso-dia .contagem .total { color: var(--cor-texto-fraco); font-size: var(--txt-m); }
+.barra {
+  height: 10px; border-radius: var(--raio-pill);
+  background: var(--cor-fundo-2); overflow: hidden;
+}
+.barra > span {
+  display: block; height: 100%;
+  background: linear-gradient(90deg, var(--cor-destaque-2), var(--cor-destaque));
+  transition: width .3s ease;
+}
+
+/* ---------------- Grupos de hábitos ---------------- */
+.grupo { margin-top: var(--espaco-g); }
+.grupo-titulo {
+  display: flex; align-items: center; gap: 8px;
+  font-size: var(--txt-p);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--cor-texto-fraco);
+  margin-bottom: 10px;
+}
+.grupo-titulo::after {
+  content: ""; flex: 1; height: 1px; background: var(--cor-borda);
+}
+
+/* ---------------- Card de hábito ---------------- */
+.habito {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-card);
+  padding: 14px;
+  margin-bottom: 10px;
+  box-shadow: var(--sombra-card);
+  transition: background .15s ease, border-color .15s ease;
+}
+.habito.feito {
+  background: var(--cor-superficie-2);
+  border-color: var(--cor-destaque-2);
+}
+.habito .icone {
+  width: 28px; display: flex; align-items: center; justify-content: center;
+  color: var(--cor-texto-fraco);
+}
+.habito.feito .icone { color: var(--cor-destaque); }
+.habito .corpo { flex: 1; min-width: 0; }
+.habito .nome { font-weight: var(--peso-medio); }
+.habito.feito .nome { color: var(--cor-destaque); }
+.habito .sub {
+  font-size: var(--txt-pp); color: var(--cor-texto-fraco); margin-top: 2px;
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.sub-item { display: inline-flex; align-items: center; gap: 4px; }
+.sub-item .ico-svg { opacity: .9; }
+.streak {
+  color: var(--cor-destaque); font-weight: var(--peso-medio);
+}
+
+/* botão de marcar (check) */
+.marcar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: transparent;
+  border: 2px solid var(--cor-borda);
+  color: transparent;
+  font-size: 18px; font-weight: bold;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.habito.feito .marcar {
+  background: var(--cor-sucesso);
+  border-color: var(--cor-sucesso);
+  color: #0f0d0a;
+}
+
+/* contador */
+.contador { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.contador button {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--cor-fundo-2);
+  border: 1px solid var(--cor-borda);
+  color: var(--cor-texto);
+  font-size: 20px; line-height: 1;
+}
+.contador .valor { min-width: 34px; text-align: center; font-weight: var(--peso-forte); font-size: var(--txt-g); }
+
+/* botão excluir (modo edição) */
+.excluir {
+  background: transparent; color: var(--cor-perigo);
+  font-size: 18px; width: 30px; flex-shrink: 0;
+}
+
+/* ---------------- Botões gerais ---------------- */
+.btn {
+  background: var(--cor-destaque);
+  color: #0f0d0a;
+  font-weight: var(--peso-forte);
+  padding: 14px;
+  border-radius: var(--raio-botao);
+  width: 100%;
+  font-size: var(--txt-m);
+}
+.btn-fantasma {
+  background: transparent;
+  color: var(--cor-texto-fraco);
+  border: 1px dashed var(--cor-borda);
+  padding: 12px;
+  border-radius: var(--raio-botao);
+  width: 100%;
+}
+.btn-sec {
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  padding: 12px;
+  border-radius: var(--raio-botao);
+  width: 100%;
+}
+.linha-botoes { display: flex; gap: 10px; margin-top: 10px; }
+.linha-botoes > * { flex: 1; }
+
+/* ---------------- Formulário (Alter Ego / add hábito) ---------------- */
+.secao-titulo {
+  font-size: var(--txt-g); font-weight: var(--peso-forte); margin-bottom: 4px;
+}
+.secao-ajuda { color: var(--cor-texto-fraco); font-size: var(--txt-p); margin-bottom: var(--espaco); }
+.campo { margin-bottom: var(--espaco); }
+.campo label {
+  display: block; font-size: var(--txt-p); color: var(--cor-texto-fraco);
+  margin-bottom: 6px;
+}
+textarea { min-height: 70px; resize: vertical; }
+
+.foto-ego {
+  display: flex; align-items: center; gap: var(--espaco); margin-bottom: var(--espaco);
+}
+.foto-ego .circulo {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--cor-fundo-2); border: 2px solid var(--cor-destaque-2);
+  display: grid; place-items: center; overflow: hidden;
+  font-size: 30px; color: var(--cor-texto-fraco);
+}
+.foto-ego .circulo img { width: 100%; height: 100%; object-fit: cover; }
+
+.aviso-fase {
+  background: var(--cor-destaque-suave);
+  border: 1px solid var(--cor-destaque-2);
+  color: var(--cor-texto);
+  border-radius: var(--raio-botao);
+  padding: 12px; font-size: var(--txt-p); margin: var(--espaco) 0;
+}
+
+/* ---------------- Tela "em breve" (stub) ---------------- */
+.em-breve {
+  text-align: center; padding: 60px 20px; color: var(--cor-texto-fraco);
+}
+.em-breve .emoji { font-size: 48px; display: block; margin-bottom: 12px; }
+.em-breve h2 { color: var(--cor-texto); margin-bottom: 8px; }
+
+/* ---------------- Barra de navegação inferior ---------------- */
+.nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: var(--altura-nav);
+  background: var(--cor-fundo-2);
+  border-top: 1px solid var(--cor-borda);
+  display: flex;
+}
+.nav .item {
+  flex: 1; background: transparent;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; color: var(--cor-texto-apagado);
+  font-size: var(--txt-pp);
+}
+.nav .item .ico { font-size: 20px; }
+.nav .item.ativo { color: var(--cor-destaque); }
+
+/* ---------------- Cabeçalho de tela com ação ---------------- */
+.tela-topo {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: var(--espaco);
+}
+.icone-botao {
+  background: var(--cor-superficie); border: 1px solid var(--cor-borda);
+  color: var(--cor-texto); width: 40px; height: 40px; border-radius: var(--raio-botao);
+  font-size: 18px;
+}
+.icone-botao.ativo { box-shadow: var(--brilho-ouro); color: var(--cor-destaque); }
+
+/* ---------------- Ícones (SVG) ---------------- */
+.ico-svg { display: block; }
+.btn, .btn-sec, .btn-fantasma {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.icone-botao, .marcar, .excluir, .contador button {
+  display: grid; place-items: center;
+}
+.gt-ico { display: inline-flex; color: var(--cor-texto-fraco); }
+.aviso-fase .ico-svg { display: inline-block; vertical-align: -3px; margin-right: 4px; }
+.em-breve .emoji { color: var(--cor-destaque); display: inline-flex; }
+.foto-ego .circulo { color: var(--cor-texto-fraco); }
+
+/* Seletor de ícones (novo hábito) */
+.form-novo { flex-direction: column; align-items: stretch; gap: 10px; }
+.campo-rotulo { font-size: var(--txt-p); color: var(--cor-texto-fraco); margin-top: 2px; }
+.picker { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+.pick {
+  width: 42px; height: 42px; flex: 0 0 auto;
+  border-radius: var(--raio-botao);
+  background: var(--cor-fundo-2); border: 1px solid var(--cor-borda);
+  color: var(--cor-texto-fraco);
+}
+.pick.sel { color: var(--cor-destaque); box-shadow: var(--brilho-ouro); }
+
+/* ============================================================
+   RPG — card do personagem
+   ============================================================ */
+.rpg-card {
+  position: relative;
+  margin-top: var(--espaco);
+  padding: var(--espaco);
+  border-radius: var(--raio-card);
+  border: 1px solid var(--cor-destaque-2);
+  background:
+    radial-gradient(120% 80% at 0% 0%, var(--cor-destaque-suave), transparent 60%),
+    linear-gradient(160deg, var(--cor-superficie-2), var(--cor-superficie));
+  box-shadow: var(--sombra-card);
+  overflow: hidden;
+}
+.rpg-perfil { display: flex; align-items: center; gap: 14px; }
+.rpg-avatar {
+  position: relative;
+  width: 64px; height: 64px; flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--cor-fundo-2);
+  border: 2px solid var(--cor-destaque);
+  box-shadow: var(--brilho-ouro);
+  display: grid; place-items: center; overflow: hidden;
+  color: var(--cor-destaque);
+}
+.rpg-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.rpg-nivel-badge {
+  position: absolute; bottom: -4px; right: -4px;
+  min-width: 22px; height: 22px; padding: 0 4px;
+  border-radius: var(--raio-pill);
+  background: var(--cor-destaque); color: #0f0d0a;
+  font-size: var(--txt-pp); font-weight: var(--peso-forte);
+  display: grid; place-items: center;
+  border: 2px solid var(--cor-fundo);
+}
+.rpg-id { min-width: 0; }
+.rpg-nome {
+  font-size: var(--txt-g); font-weight: var(--peso-forte);
+  letter-spacing: .5px; line-height: 1.1;
+  text-transform: uppercase;
+}
+.rpg-classe {
+  color: var(--cor-destaque); font-size: var(--txt-p);
+  font-weight: var(--peso-medio); margin-top: 2px;
+}
+
+.rpg-xp { margin-top: var(--espaco); }
+.rpg-xp-linha {
+  display: flex; justify-content: space-between;
+  font-size: var(--txt-pp); color: var(--cor-texto-fraco); margin-bottom: 6px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.rpg-card .barra > span {
+  background: linear-gradient(90deg, var(--cor-destaque-2), var(--cor-xp));
+}
+
+.rpg-stats {
+  display: flex; gap: 8px; margin-top: var(--espaco);
+}
+.rpg-stat {
+  flex: 1; text-align: center;
+  background: var(--cor-fundo-2); border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-botao); padding: 8px 4px;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.rpg-stat-ico { color: var(--cor-destaque); display: inline-flex; }
+.rpg-stat b { font-size: var(--txt-g); font-weight: var(--peso-forte); }
+.rpg-stat span:last-child { font-size: var(--txt-pp); color: var(--cor-texto-fraco); }
+
+.rpg-attrs { display: flex; gap: 8px; margin-top: 8px; }
+.rpg-attr {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  background: var(--cor-fundo-2); border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-botao); padding: 10px 4px;
+  border-top: 2px solid var(--cor-borda);
+}
+.rpg-attr-ico { display: inline-flex; }
+.rpg-attr-val { font-size: var(--txt-g); font-weight: var(--peso-forte); }
+.rpg-attr-nome {
+  font-size: var(--txt-pp); color: var(--cor-texto-fraco);
+  text-transform: uppercase; letter-spacing: .5px;
+}
+.attr-corpo      { border-top-color: var(--cor-corpo); }
+.attr-corpo .rpg-attr-ico      { color: var(--cor-corpo); }
+.attr-mente      { border-top-color: var(--cor-mente); }
+.attr-mente .rpg-attr-ico      { color: var(--cor-mente); }
+.attr-disciplina { border-top-color: var(--cor-disciplina); }
+.attr-disciplina .rpg-attr-ico { color: var(--cor-disciplina); }
+
+/* ============================================================
+   Chefões (bosses)
+   ============================================================ */
+.boss {
+  margin-top: 12px; padding: 14px;
+  border-radius: var(--raio-card);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-left: 4px solid var(--cor-comum);
+  box-shadow: var(--sombra-card);
+}
+.boss.rar-comum    { border-left-color: var(--cor-comum); }
+.boss.rar-raro     { border-left-color: var(--cor-raro); }
+.boss.rar-epico    { border-left-color: var(--cor-epico); }
+.boss.rar-lendario { border-left-color: var(--cor-lendario); box-shadow: var(--brilho-ouro); }
+.boss.st-derrotado { opacity: .7; }
+.boss.st-caiu      { opacity: .7; border-left-color: var(--cor-perigo); }
+
+.boss-topo { display: flex; align-items: center; gap: 12px; }
+.boss-ico {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border-radius: var(--raio-botao);
+  background: var(--cor-fundo-2); border: 1px solid var(--cor-borda);
+  display: grid; place-items: center; color: var(--cor-perigo);
+}
+.boss.st-derrotado .boss-ico { color: var(--cor-sucesso); }
+.boss-id { flex: 1; min-width: 0; }
+.boss-nome { font-weight: var(--peso-forte); font-size: var(--txt-m); }
+.boss-meta { font-size: var(--txt-pp); color: var(--cor-texto-fraco); margin-top: 2px; }
+.boss-rar { color: var(--cor-destaque); font-weight: var(--peso-medio); }
+.rar-comum    .boss-rar { color: var(--cor-comum); }
+.rar-raro     .boss-rar { color: var(--cor-raro); }
+.rar-epico    .boss-rar { color: var(--cor-epico); }
+.rar-lendario .boss-rar { color: var(--cor-lendario); }
+.boss-selo {
+  font-size: var(--txt-pp); font-weight: var(--peso-medio);
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 8px; border-radius: var(--raio-pill);
+}
+.boss-selo.venceu { color: var(--cor-sucesso); background: var(--cor-sucesso-suave); }
+.boss-selo.perdeu { color: var(--cor-perigo); background: rgba(217,83,79,.14); }
+
+.boss-vida { margin-top: 12px; }
+.boss-vida-linha {
+  display: flex; justify-content: space-between;
+  font-size: var(--txt-pp); color: var(--cor-texto-fraco); margin-bottom: 6px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.barra.vida > span {
+  background: linear-gradient(90deg, #9b2f2c, var(--cor-vida-boss));
+}
+.boss-sub { font-size: var(--txt-pp); color: var(--cor-texto-fraco); margin-top: 6px; }
+
+.boss-premios {
+  display: flex; gap: 12px; margin-top: 10px;
+  font-size: var(--txt-p); font-weight: var(--peso-medio);
+}
+.boss-recompensa { color: var(--cor-sucesso); display: inline-flex; align-items: center; gap: 4px; }
+.boss-punicao    { color: var(--cor-perigo);  display: inline-flex; align-items: center; gap: 4px; }
+.boss .linha-botoes, .boss .btn-fantasma { margin-top: 12px; }
+
+/* ============================================================
+   Toast de XP
+   ============================================================ */
+.toast {
+  position: fixed; left: 50%; bottom: calc(var(--altura-nav) + 16px);
+  transform: translate(-50%, 20px);
+  background: var(--cor-destaque); color: #0f0d0a;
+  font-weight: var(--peso-forte); font-size: var(--txt-p);
+  padding: 10px 16px; border-radius: var(--raio-pill);
+  display: flex; align-items: center; gap: 6px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.45);
+  opacity: 0; pointer-events: none; z-index: 50;
+  transition: opacity .25s ease, transform .25s ease;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* nav com 5 itens fica mais apertada — reduz um tiquinho */
+.nav .item { font-size: 11px; }

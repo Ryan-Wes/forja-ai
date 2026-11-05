@@ -1,0 +1,67 @@
+/* ============================================================
+   FORJA — TEMA (tokens)
+   Tudo que é "aparência" mora aqui. Pra trocar o visual do app
+   inteiro, mexa só neste arquivo — nada de cor chumbada no resto.
+   ============================================================ */
+
+:root {
+  /* ----- Cores base (dark + dourado / fogo da forja) ----- */
+  --cor-fundo:          #0f0d0a;   /* fundo da tela */
+  --cor-fundo-2:        #16120d;   /* faixas / barra inferior */
+  --cor-superficie:     #1c1812;   /* cards */
+  --cor-superficie-2:   #241f17;   /* card em destaque / hover */
+  --cor-borda:          #332c20;
+
+  --cor-destaque:       #e0a53b;   /* dourado/âmbar — o fogo */
+  --cor-destaque-2:     #b3791f;   /* dourado mais fundo */
+  --cor-destaque-suave: rgba(224, 165, 59, 0.14);
+
+  --cor-texto:          #f2ede4;   /* texto principal */
+  --cor-texto-fraco:    #9a938a;   /* texto secundário */
+  --cor-texto-apagado:  #6b645b;   /* placeholders / desativado */
+
+  --cor-sucesso:        #7bc043;   /* "feito" */
+  --cor-sucesso-suave:  rgba(123, 192, 67, 0.14);
+  --cor-perigo:         #d9534f;   /* excluir / deslize */
+
+  /* ----- RPG: atributos ----- */
+  --cor-corpo:          #e2544b;   /* força / físico */
+  --cor-mente:          #4aa3e0;   /* foco / mente */
+  --cor-disciplina:     #c58be8;   /* vontade / disciplina */
+
+  /* ----- RPG: raridade dos chefões ----- */
+  --cor-comum:          #9a938a;
+  --cor-raro:           #4aa3e0;
+  --cor-epico:          #c58be8;
+  --cor-lendario:       #e0a53b;
+
+  /* ----- RPG: barras ----- */
+  --cor-xp:             var(--cor-destaque);  /* barra de XP do personagem */
+  --cor-vida-boss:      #d9534f;              /* vida do chefão (cai ao resistir) */
+
+  /* ----- Tipografia ----- */
+  --fonte: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --txt-xg:  28px;
+  --txt-g:   20px;
+  --txt-m:   16px;
+  --txt-p:   14px;
+  --txt-pp:  12px;
+  --peso-forte: 800;
+  --peso-medio: 600;
+
+  /* ----- Formas e espaços ----- */
+  --raio-card:   16px;
+  --raio-botao:  12px;
+  --raio-pill:   999px;
+  --espaco:      16px;
+  --espaco-p:     8px;
+  --espaco-g:    24px;
+
+  /* ----- Sombras / efeitos ----- */
+  --sombra-card: 0 2px 10px rgba(0, 0, 0, 0.35);
+  --brilho-ouro: 0 0 0 1px var(--cor-destaque), 0 0 16px var(--cor-destaque-suave);
+
+  /* ----- Layout ----- */
+  --largura-max: 520px;   /* no PC fica centralizado como um "celular largo" */
+  --altura-nav:  68px;
+}
